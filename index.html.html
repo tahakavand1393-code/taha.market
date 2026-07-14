@@ -1,0 +1,134 @@
+!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<title>ورود به سایت</title>
+
+<style>
+
+body{
+font-family:tahoma;
+background:#f2f2f2;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+width:350px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#0077ff;
+color:white;
+border:none;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0057cc;
+}
+
+#code{
+font-size:28px;
+color:red;
+margin:15px 0;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>ورود به فروشگاه</h2>
+
+<input
+type="tel"
+id="phone"
+placeholder="09123456789">
+
+<button onclick="sendCode()">
+دریافت کد
+</button>
+
+<div id="code"></div>
+
+<input
+type="text"
+id="usercode"
+placeholder="کد ۶ رقمی">
+
+<button onclick="checkCode()">
+ورود
+</button>
+
+</div>
+
+<script>
+
+let code="";
+
+function sendCode(){
+
+let phone=document.getElementById("phone").value;
+
+let pattern=/^09\d{9}$/;
+
+if(!pattern.test(phone)){
+
+alert("شماره موبایل معتبر نیست.");
+
+return;
+
+}
+
+code=Math.floor(100000+Math.random()*900000);
+
+document.getElementById("code").innerHTML=
+"کد شما: "+code;
+
+}
+
+function checkCode(){
+
+let user=document.getElementById("usercode").value;
+
+if(user==code){
+
+alert("ورود موفق بود");
+
+window.location.href="shop.html";
+
+}else{
+
+alert("کد وارد شده اشتباه است.");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
